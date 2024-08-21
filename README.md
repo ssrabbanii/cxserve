@@ -7,6 +7,12 @@ This project is a full-stack admin dashboard built using the following technolog
 - **MongoDB** for the database
 - **Node.js** and **Express.js** for the backend
 
+### API Documentation
+
+The API for this project is documented using Postman. You can access the Postman collection to explore the available endpoints, their parameters, and example responses.
+
+Postman API Documentation [Link](https://documenter.getpostman.com/view/21884902/2s935soMqx)
+
 ### Credit
 
 Special thanks to Ed Roh - Youtube.
