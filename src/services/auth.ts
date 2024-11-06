@@ -1,5 +1,5 @@
 import { auth, db } from "@/firebase";
-import { TimepassUser } from "@/types/models/user";
+import { TimepassManager } from "@/types/models/manager";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import {
   createUserWithEmailAndPassword,
@@ -9,27 +9,29 @@ import {
 import { doc, setDoc } from "firebase/firestore/lite";
 import { useNavigate } from "react-router-dom";
 
+//
+
 // Registration
 
-interface UserInput extends TimepassUser {
+interface ManagerInput extends TimepassManager {
   password: string;
 }
 
-const registerUser = async ({
+const registerManager = async ({
   email,
   password,
   name,
   phone,
-}: UserInput) => {
-  // Create User account
+}: ManagerInput) => {
+  // Create manager account
   const userCredentials = await createUserWithEmailAndPassword(
     auth,
     email,
     password
   );
 
-  // Save additional User info in Firestore
-  await setDoc(doc(db, "users", userCredentials.user.uid), {
+  // Save additional manager info in Firestore
+  await setDoc(doc(db, "managers", userCredentials.user.uid), {
     name: name,
     phone: phone,
     email: email,
@@ -37,14 +39,14 @@ const registerUser = async ({
   });
 };
 
-export const useRegisterUser = (redirect: Boolean) => {
+export const useRegisterManager = () => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
   return useMutation({
-    mutationFn: registerUser,
+    mutationFn: registerManager,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["user"] });
-      if (redirect) navigate("/");
+      queryClient.invalidateQueries({ queryKey: ["manager"] });
+      navigate("/");
     },
     onError: (err) => {
       console.error("Error registering user:", err.message);
@@ -54,24 +56,25 @@ export const useRegisterUser = (redirect: Boolean) => {
 
 // Sign In
 
-const signInUser = async ({
+const signInManager = async ({
   email,
   password,
 }: {
   email: string;
   password: string;
 }) => {
+  // Create manager account
   return await signInWithEmailAndPassword(auth, email, password);
 };
 
-export const useSignInUser = (redirect: Boolean) => {
+export const useSignInManager = () => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
   return useMutation({
-    mutationFn: signInUser,
+    mutationFn: signInManager,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["user"] });
-      if (redirect) navigate("/");
+      queryClient.invalidateQueries({ queryKey: ["manager"] });
+      navigate("/");
     },
     onError: (err) => {
       console.error("Error signing in user:", err.message);
@@ -81,16 +84,18 @@ export const useSignInUser = (redirect: Boolean) => {
 
 // Sign Out
 
-const signOutUser = async () => {
+const signOutManager = async () => {
   return await signOut(auth);
 };
 
-export const useSignOutUser = () => {
+export const useSignOutManager = () => {
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
   return useMutation({
-    mutationFn: signOutUser,
+    mutationFn: signOutManager,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["user"] });
+      queryClient.invalidateQueries({ queryKey: ["manager"] });
+      navigate("/login");
     },
     onError: (err) => {
       console.error("Error signing out user:", err.message);

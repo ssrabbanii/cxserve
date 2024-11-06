@@ -1,29 +1,21 @@
-"use client";
+"use client"
 
-import * as React from "react";
-import { format } from "date-fns";
-import { Calendar as CalendarIcon } from "lucide-react";
+import * as React from "react"
+import { format } from "date-fns"
+import { Calendar as CalendarIcon } from "lucide-react"
 
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
+import { Calendar } from "@/components/ui/calendar"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
+} from "@/components/ui/popover"
 
-interface DatePickerProps {
-  date: Date | undefined;
-  setDate: (date: Date | undefined) => void;
-  fromDate: Date | undefined;
-}
+export function DatePicker() {
+  const [date, setDate] = React.useState<Date>()
 
-export const DatePicker: React.FC<DatePickerProps> = ({
-  date,
-  setDate,
-  fromDate,
-}) => {
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -31,8 +23,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
           variant={"outline"}
           className={cn(
             "w-[280px] justify-start text-left font-normal",
-            !date && "text-muted-foreground",
-            "shadow-lg dark:shadow-accent"
+            !date && "text-muted-foreground"
           )}
         >
           <CalendarIcon className="mr-2 h-4 w-4" />
@@ -44,10 +35,9 @@ export const DatePicker: React.FC<DatePickerProps> = ({
           mode="single"
           selected={date}
           onSelect={setDate}
-          fromDate={fromDate}
           initialFocus
         />
       </PopoverContent>
     </Popover>
-  );
-};
+  )
+}

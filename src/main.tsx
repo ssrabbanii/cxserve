@@ -1,13 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
-import { ThemeProvider } from "@/components/theme-provider.tsx";
+
+import { Theme } from "@radix-ui/themes";
 import "./index.css";
+import "@radix-ui/themes/styles.css";
+
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <ThemeProvider>
+    <Theme accentColor="gray" grayColor="sand" radius="large" scaling="95%">
       <App />
-    </ThemeProvider>
+    </Theme>
   </React.StrictMode>
 );
