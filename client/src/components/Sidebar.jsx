@@ -35,7 +35,7 @@ import ProfileImage from 'assets/images.png'
 
 const navItems =[
     {
-        text:"Dashboard",
+        text:"New Report",
         icon:<HomeOutlined/>
     },
     {
@@ -126,7 +126,7 @@ const Sidebar = ({
                     <FlexBetween color={theme.palette.secondary.main}>
                         <Box display="flex" alignItems="center" gap="0.5rem">
                             <Typography variant="h4" fontWeight="bold">
-                                CathAI
+                                CXServe
                             </Typography>
                         </Box>
                         {!isNonMobile && (
@@ -147,7 +147,7 @@ const Sidebar = ({
                                     </Typography>
                                 )
                             }
-                            const lcText = text === "Flight List" ? "transactions" : text === "Data Analysis" ? "overview" : text.toLowerCase();
+                            const lcText = text === "New Report" ? "tray" : text === "Flight List" ? "transactions" : text === "Data Analysis" ? "overview" : text.toLowerCase();
 
                             return (
                                 <ListItem key={text} disablePadding>

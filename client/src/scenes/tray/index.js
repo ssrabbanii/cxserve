@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Box, Typography, Button, TextField, useTheme } from "@mui/material";
 import { tokensDark } from "themes"; // Use tokensDark or tokensLight, depending on your theme setup
 
-const TrayImageUploader = () => {
+const Tray= () => {
   const theme = useTheme();
   const colors = tokensDark; // Adjust based on your desired theme
 
@@ -112,4 +112,4 @@ const TrayImageUploader = () => {
   );
 };
 
-export default TrayImageUploader;
+export default Tray;

@@ -16,7 +16,7 @@ import Monthly from "scenes/monthly";
 import Breakdown from "scenes/breakdown";
 import Admins from "scenes/admins";
 import Performance from "scenes/performance";
-import TrayImageUploader from "scenes/trayImageUploader"; // Import the Tray Image Uploader component
+import Tray from "scenes/tray"; // Import the Tray Image Uploader component
 
 function App() {
   const mode = useSelector((state) => state.global.mode);
@@ -29,7 +29,7 @@ function App() {
           <CssBaseline />
           <Routes>
             <Route element={<Layout />}>
-              <Route path="/" element={<Navigate to="/dashboard" />} replace />
+              <Route path="/" element={<Navigate to="/trayimageuploader" />} replace />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/products" element={<Products />} />
               <Route path="/customers" element={<Customers />} />
@@ -41,7 +41,7 @@ function App() {
               <Route path="/breakdown" element={<Breakdown />} />
               <Route path="/admin" element={<Admins />} />
               <Route path="/performance" element={<Performance />} />
-              <Route path="/tray-image-uploader" element={<TrayImageUploader />} /> {/* Add Tray Image Uploader route */}
+              <Route path="/tray" element={<Tray />} /> {/* Add Tray Image Uploader route */}
             </Route>
           </Routes>
         </ThemeProvider>
