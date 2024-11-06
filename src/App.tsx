@@ -12,6 +12,7 @@ import { LoginPage } from "./pages/auth/Login";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { HotelPage } from "./pages/hotels/Hotel";
 import { Hotels } from "./pages/hotels/Hotels";
+import { Flights } from "./pages/flights/Flights";
 
 // User not logged in
 
@@ -58,7 +59,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/flights",
-        element: <Bookings />,
+        element: <Flights />,
       },
     ],
   },

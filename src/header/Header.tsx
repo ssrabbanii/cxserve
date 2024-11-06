@@ -53,7 +53,7 @@ const Header = () => {
         </LogoLink>
         <HeaderLink href="/hotels">Hotels</HeaderLink>
         <HeaderLink href="/rooms">Rooms</HeaderLink>
-        <HeaderLink href="/bookings">Bookings</HeaderLink>
+        <HeaderLink href="/flights">Flights</HeaderLink>
       </nav>
       <div className="flex items-center ml-auto gap-2">
         <ModeToggle />
