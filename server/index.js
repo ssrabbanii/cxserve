@@ -1,5 +1,3 @@
-require("dotenv").config();
-
 import express from "express";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
@@ -19,7 +17,27 @@ import generalRoutes from "./routers/general.js";
 // import AffiliateStat from "./models/AffiliateStat.js";
 // import { dataUser,dataProduct,dataProductStat,dataTransaction,dataOverallStat,dataAffiliateStat } from './data/index.js'
 
+// Load dependencies
+const mongoose = require("mongoose");
+require("dotenv").config(); // Load environment variables from .env
+
+// Access the MongoDB URI from the environment variable
+const uri = process.env.MONGODB_URI;
+
+// Connect to MongoDB
+mongoose
+  .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log("MongoDB connected successfully"))
+  .catch((err) => console.log("MongoDB connection error:", err));
+
+const express = require("express");
 const app = express();
+const PORT = process.env.PORT || 9000;
+
+app.get("/", (req, res) => {
+  res.send("API is running");
+});
+
 app.use(morgan("common"));
 app.use(helmet());
 app.use(cors());
